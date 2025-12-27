@@ -1,6 +1,5 @@
 # orchestrate everything
-from utils.log_parser import parse_log
-from utils.llm_analyzer import analyze_logs
+from app.utils.llm_analyzer import analyze_logs
 from collections import deque
 import json
 
@@ -10,16 +9,8 @@ def read_last_n_lines(file_path: str, n: int = 50) -> str:
 
 def analyze_log_file(file_path: str) -> dict:
 
-    # Read file
-    content = read_last_n_lines(file_path, n=10)
-
-    # Parse logs
-    parsed_logs = parse_log(content)
-
-    # Analyze with LLM
-    analysis = analyze_logs(parsed_logs)
-
-    # Return JSON
+    content = read_last_n_lines(file_path, n=50)
+    analysis = analyze_logs(content)
     return analysis
 
 

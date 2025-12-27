@@ -1,13 +1,12 @@
 # Log Analyzer
 
-AI-powered log analyzer that uses OpenAI to detect errors, assign severity levels, and provide actionable suggestions for Linux system logs.
+AI-powered log analyzer using OpenAI to detect errors and provide suggestions.
 
-## Quick Start
+## Setup
 
 ```bash
-# Set API key
-export OPENAI_API_KEY="your-key-here"
-
-# Analyze logs
-python app/main.py
+export OPENAI_API_KEY="your-key"
+uvicorn app.api.routes:app --reload
 ```
+
+Then upload logs to `http://127.0.0.1:8000/analyze`

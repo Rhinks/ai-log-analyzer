@@ -1,4 +1,4 @@
-from config import (
+from app.config import (
     LLM_MODEL,
     SYSTEM_PROMPT,
     OUTPUT_FORMAT,
@@ -12,9 +12,9 @@ import json
 client = OpenAI(api_key=LLM_API_KEY)
 
 
-def analyze_logs(parsed_logs: list[dict]) -> dict:
+def analyze_logs(log_content: str) -> dict:
     """
-    Input: list of parsed log dictionaries
+    Input: raw log content string
     Output: structured JSON with errors, severity, suggestions
     """
 
@@ -40,7 +40,7 @@ def analyze_logs(parsed_logs: list[dict]) -> dict:
             },
             {
                 "role": "user",
-                "content": json.dumps(parsed_logs, indent=2)
+                "content": log_content
             }
         ],
         temperature=TEMPERATURE,
