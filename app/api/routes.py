@@ -1,8 +1,13 @@
 from fastapi import FastAPI, UploadFile
+from fastapi.responses import FileResponse
 from app.main import analyze_log_file
 import os
 
 app = FastAPI()
+
+@app.get("/")
+async def root():
+    return FileResponse("app/static/index.html")
 
 @app.post("/analyze")
 async def analyze_logs_endpoint(file: UploadFile):

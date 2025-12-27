@@ -9,7 +9,7 @@ def read_last_n_lines(file_path: str, n: int = 50) -> str:
 
 def analyze_log_file(file_path: str) -> dict:
 
-    content = read_last_n_lines(file_path, n=50)
+    content = read_last_n_lines(file_path, n=500)
     analysis = analyze_logs(content)
     return analysis
 
