@@ -52,22 +52,8 @@ def analyze_logs(log_content: str) -> dict:
 
 # Example run
 if __name__ == "__main__":
-    sample_parsed_logs = [
-        {
-            "timestamp": "Jun 15 02:04:59",
-            "hostname": "combo",
-            "process": "sshd(pam_unix)",
-            "pid": "20885",
-            "message": "authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.100 user=root"
-        },
-        {
-            "timestamp": "Jun 15 02:05:01",
-            "hostname": "combo",
-            "process": "sshd",
-            "pid": "20890",
-            "message": "Accepted password for user from 192.168.100 port 54321 ssh2"
-        }
-    ]
+    sample_log_text = """Jun 15 02:04:59 combo sshd(pam_unix)[20885]: authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.100 user=root
+Jun 15 02:05:01 combo sshd[20890]: Accepted password for user from 192.168.100 port 54321 ssh2"""
 
-    result = analyze_logs(sample_parsed_logs)
+    result = analyze_logs(sample_log_text)
     print(json.dumps(result, indent=2))

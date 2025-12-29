@@ -6,10 +6,15 @@ Uses OpenAI to analyze any log format and find issues.
 
 ## Quick Start
 
+1. Copy `.env.example` to `.env` and add your OpenAI API key:
+```bash
+cp .env.example .env
+# Edit .env and add your key: OPENAI_API_KEY=sk-...
+```
+
 ### With Docker (recommended)
 
 ```bash
-export OPENAI_API_KEY="your-openai-key"
 docker compose up
 ```
 
@@ -19,7 +24,6 @@ Open http://localhost:8000
 
 ```bash
 uv sync
-export OPENAI_API_KEY="your-openai-key"
 uv run uvicorn app.api.routes:app --reload
 ```
 
